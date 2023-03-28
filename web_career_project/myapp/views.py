@@ -19,4 +19,15 @@ def about(request):
 def portal(request):
     all_portals = Portal.objects.all()
     context = {"all_portals": all_portals}
-    return render(request, "webcareer/portal.html", context)
+    return render(request, "webcareer/edit-information.html", context)
+
+def information(request):
+    all_informations = Portal.objects.all()
+    context = {"all_informations": all_informations}
+    return render(request, "webcareer/information.html", context)
+
+
+def information(request):
+    all_edit_informations = Portal.objects.all()
+    context = {"all_edit_informations": all_edit_informations}
+    return render(request, "webcareer/edit-information.html", context)

@@ -1,0 +1,50 @@
+{% extends 'webcareer/base.html' %}
+
+<title>{% block title %} Phenomenal Home {% endblock title %}</title>
+
+{% block content%} 
+{% if status == 'delete '%}
+
+<div class="alert alert-danger">
+  <strong>ລົບສິນຄ້າສຳເລັດແລ້ວ!</strong> ຖ້າຫາກທ່ານ ຕ້ອງການທີ່ຈະສັ່ງຊື້ໃໝ່
+  ກະລຸນາໄປທີ່ໜ້ານະວັດຕະກຳທັງໝົດ.
+</div>
+{% endif %}
+<br />
+
+<div class="container">
+  <h3>ກະຕ່າສິນຄ້າ</h3>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <td class="table-dark">Title</td>
+        <td class="table-dark">Detail</td>
+        <td class="table-dark">File</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for pd in mycart %}
+      <tr>
+        <td class="table-primary">{{pd.stamp}}</td>
+        <td class="table-primary">{{pd.productid}}</td>
+        <td class="table-primary">{{pd.productname}}</td>
+        
+      </tr>
+      {% endfor %}
+      <tr>
+        <td class="table-primary"><h5>Title</h5></td>
+        <td class="table-primary"><h5>Detail</5></td>
+        <td class="table-primary"><h5>File</5></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row">
+    <div style="padding: 8px"></div>
+    <a href="#" class="btn badge-dark">Summit</a>
+    <div style="padding: 10px"></div>
+  </div>
+  <div style="padding: 10px"></div>
+</div>
+
+{% endblock content %}
