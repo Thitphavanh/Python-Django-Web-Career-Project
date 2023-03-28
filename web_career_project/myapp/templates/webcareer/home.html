@@ -1,0 +1,27 @@
+{% extends 'webcareer/base.html' %}
+
+<title>{% block title %} Phenomenal Home {% endblock title %}</title>
+
+{% block content%}
+
+<div class="container">
+  <h1>Phenomenal Website Store</h1>
+  <p>Official Website</p>
+
+  <div class="row">
+    {% for post in all_posts %}
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          {% comment %} <img src="{{ post.featured_pic.url }}" alt="{{ post.title }}" class="card-img-top" height="180"/> {% endcomment %}
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">{{ post.description }}</p>
+          <a href="blog/{{ post.id }}" class="btn btn-dark">Read more</a>
+        </div>
+      </div>
+      <br />
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content%}
