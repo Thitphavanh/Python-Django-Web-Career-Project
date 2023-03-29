@@ -24,7 +24,7 @@
     <div class="mb-3 mt-3">
       <label for="password">Password:</label>
       <input
-        type="password"
+        type="text"
         class="form-control"
         id="password"
         placeholder="password"
@@ -39,7 +39,10 @@
       </label>
     </div>
 
-    <button type="submit" class="btn btn-dark">Submit</button>
+    <div style="padding: 8px"></div>
+    <a href="{% url 'main' %}" class="btn badge-dark">Summit</a>
+    
+    {% comment %} <a class="btn btn-dark" href="{% url 'main' %}">Submit</a> {% endcomment %}
   </form>
 </div>
 {% endblock content %}

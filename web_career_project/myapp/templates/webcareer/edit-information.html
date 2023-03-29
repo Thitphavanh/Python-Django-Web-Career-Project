@@ -52,31 +52,47 @@
 
     </div>
 
-<div class="row" >
-    <div class="mb-1 mt-1" >
-      {% comment %} <label for="file">File:</label> {% endcomment %}
+    {% comment %} <div class="row" >
+      <div class="mb-1 mt-1" >
+        <div style="padding: 8px"></div>
+       <label for="file">File:</label>
+       <button type="submit" class="btn btn-dark">Brown</button>
+     </div>
+ 
+     <br />
+ 
+     <div class="mb-1 mt-1">
+      <div style="padding: 8px"></div>
+       <label for="edit">Edit:</label>
+       <button type="submit" class="btn btn-dark">Edit</button>
+     </div>
+ 
+     <br />
+ 
+     <div class="mb-1 mt-1">
+      <div style="padding: 8px"></div>
+       <label for="delete">Delete:</label>
+       <button type="submit" class="btn btn-dark">Delete</button>
+     </div>
+
+    
+    </div> {% endcomment %}
+
+    <div class="row">
+      <div style="padding: 8px"></div>
       <button type="submit" class="btn btn-dark">Brown</button>
+      <div style="padding: 10px"></div>
+       <button type="submit" class="btn btn-dark">Edit</button>
+       <div style="padding: 10px"></div>
+       <button type="submit" class="btn btn-dark">Delete</button>
     </div>
-    {% comment %} <button type="submit" class="btn btn-dark">Brown</button> {% endcomment %}
-    <br />
+    <div style="padding: 10px"></div>
 
-    <div class="mb-1 mt-1">
-      {% comment %} <label for="edit">Edit:</label> {% endcomment %}
-      <button type="submit" class="btn btn-dark">Edit</button>
-    </div>
-    {% comment %} <button type="submit" class="btn btn-dark">Edit</button> {% endcomment %}
-    <br />
 
-    <div class="mb-1 mt-1">
-      {% comment %} <label for="delete">Delete:</label> {% endcomment %}
-      <button type="submit" class="btn btn-dark">Delete</button>
-    </div>
-    {% comment %} <button type="submit" class="btn btn-dark">Delete</button> {% endcomment %}
-    <br />
+    {% comment %} <a class="btn btn-dark" href="#">ເຂົ້າສູ່ລະບົບ</a> {% endcomment %}
 
 </div>
 
 
-</div>
 
 {% endblock content %}
