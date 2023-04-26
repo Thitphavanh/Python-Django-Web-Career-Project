@@ -3,10 +3,10 @@ from .views import *
 
 urlpatterns = [
     path('', home),
-    path('portal', portal),
-    path('main', main),
-    path('information', information),
-    path('edit-information', edit_information),
-    # path('about', about),
+    path('portal/', portal, name='portal'),
+    path('login/', login, name='login'),
+    path('add-article/', add_article, name='add-article'),
+    path('edit-article/<int:id>', edit_article, name='edit-article'),
+    path('about/', about),
 
 ]

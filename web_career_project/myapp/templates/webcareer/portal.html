@@ -2,47 +2,47 @@
 
 <title>{% block title %} Phenomenal Home {% endblock title %}</title>
 
-{% block content%}
+{% block content%} 
 
-<div class="container" style="margin-bottom: 60px">
-  <h2>Login</h2>
-  <p>Please Login First</p>
-  <form method="POST">
-    {% csrf_token %}
 
-    <div class="mb-3 mt-3">
-      <label for="email">Email:</label>
-      <input
-        type="text"
-        class="form-control"
-        id="email"
-        placeholder="email"
-        name="email"
-      />
-    </div>
+<div class="container">
+  <h3>Portal</h3>
 
-    <div class="mb-3 mt-3">
-      <label for="password">Password:</label>
-      <input
-        type="text"
-        class="form-control"
-        id="password"
-        placeholder="password"
-        name="password"
-      />
-    </div>
-
-    <div class="form-check mb-3">
-      <label class="form-check-label">
-        <input class="form-check-input" type="checkbox" name="remember" />
-        Remember me
-      </label>
-    </div>
-
+  <table class="table">
+    <thead>
+      <tr>
+        <td class="table-dark">Title</td>
+        <td class="table-dark">Detail</td>
+        <td class="table-dark">File</td>
+        <td class="table-dark">Edit</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for portal in all_portals %}
+      <tr>
+        <td class="table-primary"><h5>{{portal.title}}</h5></td>
+        <td class="table-primary"><h5>{{portal.detail}}</5></td>
+        <th class="table-primary">
+      <form method="get" action="file.doc">
+          {% comment %} <button type="submit" form="form{{portal.file}}"class="btn badge-danger">Download</button> {% endcomment %}
+        <a href="{{portal.file.url}}"><i class="fa fa-address-card-o" style="font-size:16px;color:danger;">Download</i></a>
+       </form>
+      </th>
+      <td class="table-primary">
+        <a href="{% url 'edit-article' portal.id %}"><i class="fa fa-file" style="font-size:16px;color:darkred;"><h5>Edit</5></i></a>
+          
+      </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div style="padding: 8px"></div>
+  <div class="row">
     <div style="padding: 8px"></div>
-    <a href="{% url 'main' %}" class="btn badge-dark">Summit</a>
-    
-    {% comment %} <a class="btn btn-dark" href="{% url 'main' %}">Submit</a> {% endcomment %}
-  </form>
+    <a href="{% url 'add-article' %}" class="btn badge-dark">Add</a>
+  </div>
+  <div style="padding: 10px"></div>
 </div>
+
+
 {% endblock content %}

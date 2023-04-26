@@ -27,6 +27,7 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+
           <li class="nav-item active">
             <a class="nav-link" href="/"
               >Home <span class="sr-only">(current)</span></a
@@ -37,19 +38,29 @@
             <a class="nav-link" href="/portal">Portal</a>
           </li>
 
-          <li class="nav-item">
+          {% comment %} <li class="nav-item">
             <a class="nav-link" href="/main">Main</a>
+          </li> {% endcomment %}
+          <li class="nav-item">
+            <a class="nav-link" href="/add-article">Artical</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/information">Information</a>
+            <a class="nav-link" href="/edit-article">Edit Artical</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/edit-information">Edit Information</a>
+            <a class="nav-link" href="/booking">Booking</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/about">About</a>
           </li>
         </ul>
+        <p style="color: red; margin-top: 10px">
+          Hi, &nbsp&nbsp
+        </p>
+
+        &nbsp&nbsp&nbsp
+        <a class="btn btn-dark" href="/login">Login</a>
+
       </div>
     </nav>
     <div class="text-center">
