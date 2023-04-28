@@ -1,6 +1,8 @@
 from django.shortcuts import *
 from .models import *
 from django.core.files.storage import FileSystemStorage
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 
 
 def home(request):
@@ -11,10 +13,38 @@ def home(request):
     return render(request, "webcareer/home.html", context)
 
 
-def login(request):
-    all_login = Portal.objects.all()
-    context = {"all_login": all_login}
-    return render(request, "webcareer/login.html", context)
+# def login_user(request):
+#     all_login_user = Portal.objects.all()
+#     context = {"all_login_user": all_login_user}
+#     return render(request, "webcareer/login.html", context)
+
+
+def register(request):
+    if request.method == 'POST':
+        data = request.POST.copy()
+        first_name = data.get('first_name')
+        last_name = data.get('last_name')
+        email = data.get('email')
+        password = data.get('password')
+
+        new_user = User()
+        new_user.username = email
+        new_user.email = email
+        new_user.first_name = first_name
+        new_user.last_name = last_name
+        new_user.set_password(password)
+        new_user.save()
+
+        profile = Profile()
+        profile.user = User.objects.get(username=email)
+        profile.save()
+
+        user = authenticate(username=email, password=password)
+        login(request, user)
+        
+        # all_login = Portal.objects.all()
+        # context = {"all_login": all_login}
+    return render(request, "webcareer/register.html")
 
 
 def portal(request):
