@@ -5,7 +5,7 @@
 {% block content%} 
 
 
-<div class="container">
+{% comment %} <div class="container-fluid">
   <h3>Portal</h3>
 
   <table class="table">
@@ -24,7 +24,6 @@
         <td class="table-primary"><h5>{{portal.detail}}</5></td>
         <th class="table-primary">
       <form method="get" action="file.doc">
-          {% comment %} <button type="submit" form="form{{portal.file}}"class="btn badge-danger">Download</button> {% endcomment %}
         <a href="{{portal.file.url}}"><i class="fa fa-address-card-o" style="font-size:16px;color:danger;">Download</i></a>
        </form>
       </th>
@@ -42,7 +41,88 @@
     <a href="{% url 'add-article' %}" class="btn badge-dark">Add</a>
   </div>
   <div style="padding: 10px"></div>
-</div>
+</div> {% endcomment %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    font-family: Arial;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+input[type="submit"] {
+  width: 100%;
+  background-color: #000000;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+
+</style>
+</head>
+<body>
+
+
+<div class="container">
+<h2>Article Table</h2>
+<table class="table">
+  <thead>
+  <tr>
+    <th style="font-size:18px;text-align: center;">Title</th>
+    <th style="font-size:18px;text-align: center;">Detail</th>
+    <th style="font-size:18px;text-align: center;">File</th>
+    <th style="font-size:18px;text-align: center;">Edit</th>
+  </tr>
+</thead>
+<tbody>
+  {% for portal in all_portals %}
+  <tr>
+    <td>{{portal.title}}</td>
+    <td>{{portal.detail}}</td>
+    <td><form method="get" action="file.doc">
+      {% comment %} <button type="submit" form="form{{portal.file}}"class="btn badge-danger">Download</button> {% endcomment %}
+    <a href="{{portal.file.url}}"><i class="fa fa-address-card-o" style="font-size:16px;color:danger;">Download</i></a>
+   </form></td>
+   <td> 
+    <a href="{% url 'edit-article' portal.id %}"><i class="fa fa-file" style="font-size:16px;color:darkred;"><h5>Edit</5></i></a>
+    </td>
+  </tr>
+  {% endfor %}
+</tbody>
+</table>
+<div style="padding: 4px"></div>
+  <div class="row">
+    <div style="padding: 8px"></div>
+    <a href="{% url 'add-article' %}" class="btn badge-dark">Add</a>
+   
+  </div>
+  <div style="padding: 20px"></div>
+</div> 
+
+</body>
+</html>
 
 
 {% endblock content %}

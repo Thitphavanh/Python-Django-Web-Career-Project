@@ -1,4 +1,4 @@
-{% extends 'webcareer/base.html' %} 
+{% extends 'webcareer/base.html' %}
 
 <title>{% block title %} Webcareer About {% endblock title %}</title>
 
@@ -10,10 +10,13 @@
     <h1>About</h1>
     <p>Contract Us</p>
     <form action="/about" method="POST">
-      {% csrf_token %}
-        {{ form.as_p }}
-      <input class="btn btn-dark" type="submit" value="Submit"/>
+      {% csrf_token %} {{ form.as_p }}
+      <input class="btn btn-dark" type="submit" value="Submit" />
     </form>
   </div>
 </div>
-{% endblock content%}
+
+
+  
+  {% endblock content%}
+

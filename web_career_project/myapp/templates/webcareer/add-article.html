@@ -3,7 +3,7 @@
 <title>{% block title %} Phenomenal Home {% endblock title %}</title>
 
 {% block content%}
-
+{% comment %} 
 <div class="container" style="margin-bottom: 60px">
   <h2>Artical</h2>
   <form method="POST" enctype="multipart/form-data">
@@ -30,17 +30,7 @@
         placeholder="detail"
         ></textarea>
     </div>
-{% comment %} 
-    <div class="form-group">
-      <label for="tag">Tag:</label>
-      <input
-        type="text"
-        class="form-control"
-        id="tag"
-        placeholder="tag"
-        name="tag"
-      />
-    </div> {% endcomment %}
+
 
        <div class="form-group">
         <label for="uploadfile">File:</label>
@@ -52,10 +42,95 @@
         />
       </div >
       <div style="padding: 10px"></div>
-      {% comment %} <a href="{% url 'portal' %}" class="btn badge-dark">Upload</a> {% endcomment %}
       <button type="submit" class="btn btn-dark">Upload</button>
     <div style="padding: 10px"></div>
 
   </form>
-</div>
+</div> {% endcomment %}
+
+<!DOCTYPE html>
+<html>
+  <style>
+    body {
+      font-family: Arial;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      background-color: #000000;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #000000;
+    }
+
+    div.container {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+  </style>
+  <body>
+    <div class="container" style="margin-bottom: 60px">
+      <h3>Artical</h3>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+      
+      <div class="form-group">
+      <form action="/action_page.php">
+        <label for="title">Title:</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          placeholder="Your title.."
+        />
+      </div >
+
+      <div class="form-group">
+        <label for="detail">Detail:</label>
+        <input
+          type="text"
+          id="detail"
+          name="detail"
+          placeholder="Your detail.."
+        />
+      </div >
+
+
+        <div class="form-group">
+        <label for="uploadfile">File:</label>
+        <input
+          type="file"
+          id="uploadfile"
+          name="uploadfile"
+          placeholder="Your detail.."
+        />
+         </div >
+        <input type="submit" value="Upload">
+        
+      </form>
+    </div>
+  </body>
+
+  </html>
+  
 {% endblock content %}

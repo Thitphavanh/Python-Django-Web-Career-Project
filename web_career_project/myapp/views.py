@@ -24,7 +24,7 @@ def portal(request):
 
 
 def add_article(request):
-    if request.method == 'POST' and request.FILES['uploadfile']:
+    if request.method == 'POST':
         data = request.POST.copy()
         title = data.get("title")
         detail = data.get("detail")
@@ -38,7 +38,7 @@ def add_article(request):
         print('FILE_IMAGE: ', upload_file)
         print('IMAGE_NAME: ', upload_file_name)
         fs = FileSystemStorage()
-        filename = fs.save("pdf/" + upload_file_name, upload_file)
+        filename = fs.save(upload_file_name, upload_file)
         upload_file_url = fs.url(filename)
         new_artical.file = upload_file_url[6:]
 
@@ -50,7 +50,7 @@ def add_article(request):
 def edit_article(request, id):
     portal = Portal.objects.get(id=id)
 
-    if request.method == "POST" and request.FILES['uploadfile']:
+    if request.method == "POST":
         data = request.POST.copy()
         title = data.get("title")
         detail = data.get("detail")
@@ -58,35 +58,30 @@ def edit_article(request, id):
         portal.title = title
         portal.detail = detail
 
-        upload_file = request.FILES['uploadfile']
-        upload_file_name = request.FILES['uploadfile'].name.replace(' ', '')
-        print('FILE_IMAGE: ', upload_file)
-        print('IMAGE_NAME: ', upload_file_name)
-        fs = FileSystemStorage()
-        filename = fs.save("pdf/" + upload_file_name, upload_file)
-        upload_file_url = fs.url(filename)
-        portal.file = upload_file_url[6:]
-
+        if 'uploadfile' in request.FILES:
+            upload_file = request.FILES['uploadfile']
+            upload_file_name = request.FILES['uploadfile'].name.replace(' ', '')
+            print('FILE_IMAGE: ', upload_file)
+            print('IMAGE_NAME: ', upload_file_name)
+            fs = FileSystemStorage()
+            filename = fs.save(upload_file_name, upload_file)
+            upload_file_url = fs.url(filename)
+            portal.file = upload_file_url[6:]
+        else:
+            print('NO')
         portal.save()
-
-    elif request.method == "POST":
-        if request.POST.get("form_type") == 'formOne':
-            data = request.POST.copy()
-            title = data.get("title")
-            detail = data.get("detail")
-
-            portal.title = title
-            portal.detail = detail
-
-            portal.save()
-   
-        elif request.POST.get("form_type") == 'formTwo':
-            portal.delete()
-            
+        
+        return redirect("portal")
 
     portal = Portal.objects.get(id=id)
     context = {"portal": portal}
     return render(request, "webcareer/edit-article.html", context)
+
+
+def booking(request):
+    all_abouts = Portal.objects.all()
+    context = {"all_abouts": all_abouts}
+    return render(request, "webcareer/booking.html", context)
 
 
 def about(request):
